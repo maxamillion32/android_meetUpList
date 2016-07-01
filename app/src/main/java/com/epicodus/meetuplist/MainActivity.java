@@ -10,21 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mFindEventsButton;
-    private EditText mInterestEditText;
-    private TextView mAppNameTextView;
+    @Bind(R.id.FindEventsButton) Button mFindEventsButton;
+    @Bind(R.id.InterestEditText) EditText mInterestEditText;
+    @Bind(R.id.AppNameTextView) TextView mAppNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mInterestEditText = (EditText) findViewById(R.id.InterestEditText);
+        ButterKnife.bind(this);
 
-        mAppNameTextView = (TextView) findViewById(R.id.AppNameTextView);
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
         mAppNameTextView.setTypeface(pacificoFont);
-        mFindEventsButton = (Button) findViewById(R.id.FindEventsButton);
         mFindEventsButton.setOnClickListener(this);
 
     }
