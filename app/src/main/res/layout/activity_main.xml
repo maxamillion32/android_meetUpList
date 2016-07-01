@@ -37,10 +37,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Find Events"
-        android:id="@+id/button"
+        android:id="@+id/FindEventsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         android:layout_marginBottom="31dp"
         android:layout_alignBottom="@+id/imageView"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/InterestEditText"
+        android:background="@color/colorTextIcons"
+        android:layout_above="@+id/FindEventsButton"
+        android:hint="Enter Interest"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp" />
 </RelativeLayout>
