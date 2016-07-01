@@ -21,7 +21,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MeetupList"
         android:layout_alignParentTop="true"
@@ -30,8 +30,9 @@
         android:textColor="@color/colorTextIcons"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:id="@+id/textView"
-        android:background="#000" />
+        android:id="@+id/AppNameTextView"
+        android:background="#000"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"
