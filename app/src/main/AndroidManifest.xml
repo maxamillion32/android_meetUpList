@@ -18,9 +18,9 @@
         <activity android:name=".UpcomingEventsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.meetuplist.MainActivity">
-            </meta-data>
+                android:value="com.epicodus.meetuplist.MainActivity"></meta-data>
         </activity>
+        <activity android:name=".LogInActivity"></activity>
     </application>
 
 </manifest>
