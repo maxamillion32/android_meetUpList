@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 String interest = mInterestEditText.getText().toString();
                 Log.d(TAG, interest);
                 Intent intent = new Intent(MainActivity.this, UpcomingEventsActivity.class);
+                intent.putExtra("interest", interest);
                 startActivity(intent);
             }
         });
