@@ -1,10 +1,21 @@
 package com.epicodus.meetuplist;
 
+
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Guest on 7/7/16.
@@ -29,5 +40,42 @@ public class MeetupService {
 
         Call call = client.newCall(request);
         call.enqueue(callback);
+    }
+
+    public ArrayList<Meetup> processResults(Response response) {
+        ArrayList<Meetup> meetups = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+
+            if (response.isSuccessful()) {
+                JSONObject meetupJSON = new JSONObject(jsonData);
+                JSONArray meetupsJSON = meetupJSON.getJSONArray("results");
+                for (int i = 0; i < meetupsJSON.length(); i++) {
+                    JSONObject eventJSON = meetupsJSON.getJSONObject(i);
+                    String name = eventJSON.getString("name");
+                    String description = eventJSON.optString("description", "not provided");
+                    String eventUrl = eventJSON.optString("event_url", "not provided");
+                    double rsvpCount = eventJSON.optDouble("yes_rsvp_count");
+                    double latitude = eventJSON.getJSONObject("venue").optDouble("lat");
+                    double longitude = eventJSON.getJSONObject("venue").optDouble("lon");
+                    String address1 = eventJSON.getJSONObject("venue").optString("address_1", "not provided");
+                    String address2 = eventJSON.getJSONObject("venue").optString("address_2", "not provided");
+                    String city = eventJSON.optString("city", "not provided");
+                    String state = event.JSON.optString("state", "not provided");
+                    String who = event.JSON.getJSONObject("group").getString("who");
+                    String nameGroup = event.JSON.getJSONObject("group").getString("name");
+
+
+                    Meetup meetup = new Meetup(name, description, eventUrl, rsvpCount, latitude, longitude, address1, address2, city, state, who, nameGroup);
+                    meetups.add(meetup);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return meetups;
     }
 }

@@ -17,7 +17,7 @@ public class Meetup {
     private String mWho;
     private String mNameGroup;
 
-public Meetup (String name, String description, String eventUrl, String rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
+public Meetup (String name, String description, String eventUrl, double rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
     this.mName = name;
     this.mDescription = description;
     this.mEventUrl = eventUrl;
