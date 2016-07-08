@@ -10,6 +10,7 @@ public class Constants {
     public static final String API_QUERY_PARAMETER = "key";
     public static final String SEARCH_QUERY_PARAMETER = "topic";
     public static final String TIME_QUERY_PARAMETER = "time=,1w";
+    public static final String LOCATION_QUERY_PARAMETER = "zip";
 
     // https://api.meetup.com/2/open_events?topic=dancing&time=,1w&key=263238565a442e1967147767292e2462
 }

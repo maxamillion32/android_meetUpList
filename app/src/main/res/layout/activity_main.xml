@@ -51,8 +51,36 @@
         android:id="@+id/InterestEditText"
         android:background="@color/colorTextIcons"
         android:layout_above="@+id/FindEventsButton"
-        android:hint="Enter Interest"
+        android:hint=" Find Interest "
         android:padding="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginBottom="27dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="45dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LocationEditText"
+        android:background="@color/colorTextIcons"
+        android:layout_above="@+id/FindEventsButton"
+        android:hint="   Zip Code   "
+        android:padding="5dp"
+        android:layout_marginBottom="27dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="222dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="near"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/InterestEditText"
+        android:layout_toLeftOf="@+id/LocationEditText"
+        android:layout_toRightOf="@+id/InterestEditText"
+        android:layout_toEndOf="@+id/InterestEditText"
+        android:layout_marginLeft="7dp"
+        android:layout_marginBottom="3dp"
+        android:textSize="20dp" />
 </RelativeLayout>

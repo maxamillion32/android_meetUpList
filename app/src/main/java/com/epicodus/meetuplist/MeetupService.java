@@ -23,13 +23,14 @@ import okhttp3.Response;
 public class MeetupService {
     public static final String TAG = UpcomingEventsActivity.class.getSimpleName();
 
-    public static void findMeetups(String topic, Callback callback) {
+    public static void findMeetups(String topic, String location, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.SEARCH_QUERY_PARAMETER, topic);
+        urlBuilder.addQueryParameter(Constants.LOCATION_QUERY_PARAMETER, location);
         urlBuilder.addQueryParameter(Constants.TIME_QUERY_PARAMETER, Constants.TIME_QUERY_PARAMETER);
         urlBuilder.addQueryParameter(Constants.API_QUERY_PARAMETER, Constants.MEETUP_API_KEY);
         String url = urlBuilder.build().toString();
@@ -60,13 +61,13 @@ public class MeetupService {
                     JSONObject venue = eventJSON.optJSONObject("venue");
                     double latitude = 0;
                     double longitude = 0;
-                    String address1 = "N/A";
-                    String address2 = "N/A";
+                    String address1 = "not provided";
+                    String address2 = "not provided";
                     if(venue != null){
                         latitude = venue.optDouble("lat");
                         longitude = venue.optDouble("lon");
-                        address1 = venue.optString("address_1", "N/A");
-                        address2 = venue.optString("address_2", "N/A");
+                        address1 = venue.optString("address_1", "not provided");
+                        address2 = venue.optString("address_2", "not provided");
                     }
                     String city = eventJSON.optString("city", "not provided");
                     String state = eventJSON.optString("state", "not provided");

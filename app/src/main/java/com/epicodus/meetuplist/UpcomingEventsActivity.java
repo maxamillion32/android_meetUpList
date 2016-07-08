@@ -34,11 +34,12 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String topic = intent.getStringExtra("topic");
+        String location = intent.getStringExtra("location");
         mInterestTextView.setText("Here are all the results for: " + topic);
 
         mLogInButton = (Button) findViewById(R.id.LogInButton);
 
-        getMeetups(topic);
+        getMeetups(topic, location);
 
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +52,9 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
     public ArrayList<Meetup> mEvents = new ArrayList<>();
 
-    private void getMeetups(String topic) {
+    private void getMeetups(String topic, String location) {
             final MeetupService meetupService = new MeetupService();
-            meetupService.findMeetups(topic, new Callback() {
+            meetupService.findMeetups(topic, location, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

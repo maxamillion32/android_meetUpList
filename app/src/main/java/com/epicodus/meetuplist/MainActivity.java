@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.FindEventsButton) Button mFindEventsButton;
     @Bind(R.id.InterestEditText) EditText mInterestEditText;
     @Bind(R.id.AppNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.LocationEditText) EditText mLocationEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v == mFindEventsButton) {
                 String topic = mInterestEditText.getText().toString();
+                String location = mLocationEditText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, UpcomingEventsActivity.class);
                 intent.putExtra("topic", topic);
+                intent.putExtra("location", location);
                 startActivity(intent);
             }
     }
