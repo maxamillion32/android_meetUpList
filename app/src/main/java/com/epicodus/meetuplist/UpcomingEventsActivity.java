@@ -41,6 +41,9 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         mInterestTextView.setText("Here are all the results for: " + topic);
 
         mLogInButton = (Button) findViewById(R.id.LogInButton);
+
+        getMeetups(topic);
+
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +51,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        getMeetups(topic);
     }
     private void getMeetups(String topic) {
             final MeetupService meetupService = new MeetupService();
