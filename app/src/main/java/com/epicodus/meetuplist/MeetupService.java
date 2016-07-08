@@ -19,6 +19,8 @@ public class MeetupService {
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.SEARCH_QUERY_PARAMETER, topic);
+        urlBuilder.addQueryParameter(Constants.TIME_QUERY_PARAMETER, Constants.TIME_QUERY_PARAMETER);
+        urlBuilder.addQueryParameter(Constants.API_QUERY_PARAMETER, Constants.MEETUP_API_KEY);
         String url = urlBuilder.build().toString();
 
         Request request= new Request.Builder()
