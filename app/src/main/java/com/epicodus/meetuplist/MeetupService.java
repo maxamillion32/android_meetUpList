@@ -62,9 +62,9 @@ public class MeetupService {
                     String address1 = eventJSON.getJSONObject("venue").optString("address_1", "not provided");
                     String address2 = eventJSON.getJSONObject("venue").optString("address_2", "not provided");
                     String city = eventJSON.optString("city", "not provided");
-                    String state = event.JSON.optString("state", "not provided");
-                    String who = event.JSON.getJSONObject("group").getString("who");
-                    String nameGroup = event.JSON.getJSONObject("group").getString("name");
+                    String state = eventJSON.optString("state", "not provided");
+                    String who = eventJSON.getJSONObject("group").getString("who");
+                    String nameGroup = eventJSON.getJSONObject("group").getString("name");
 
 
                     Meetup meetup = new Meetup(name, description, eventUrl, rsvpCount, latitude, longitude, address1, address2, city, state, who, nameGroup);

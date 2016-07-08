@@ -7,7 +7,7 @@ public class Meetup {
     private String mName;
     private String mDescription;
     private String mEventUrl;
-    private String mRsvpCount;
+    private double mRsvpCount;
     private double mLatitude;
     private double mLongitude;
     private String mAddress1;
@@ -44,7 +44,7 @@ public Meetup (String name, String description, String eventUrl, double rsvpCoun
         return mEventUrl;
     }
 
-    public String getRsvpCount() {
+    public double getRsvpCount() {
         return mRsvpCount;
     }
 
