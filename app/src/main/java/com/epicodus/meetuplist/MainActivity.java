@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (v == mFindEventsButton) {
-                String interest = mInterestEditText.getText().toString();
+                String topic = mInterestEditText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, UpcomingEventsActivity.class);
-                intent.putExtra("interest", interest);
+                intent.putExtra("topic", topic);
                 startActivity(intent);
             }
     }

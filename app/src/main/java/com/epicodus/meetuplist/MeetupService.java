@@ -10,9 +10,9 @@ import okhttp3.Request;
  * Created by Guest on 7/7/16.
  */
 public class MeetupService {
-    public static final String TAG = UpcomingEventsActivity.class.getSimpleName()
+    public static final String TAG = UpcomingEventsActivity.class.getSimpleName();
 
-    public static void findMeetups(String location, Callback callback) {
+    public static void findMeetups(String topic, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();

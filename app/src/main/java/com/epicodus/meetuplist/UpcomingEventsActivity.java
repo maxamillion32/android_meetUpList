@@ -3,13 +3,22 @@ package com.epicodus.meetuplist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 public class UpcomingEventsActivity extends AppCompatActivity {
+    public static final String TAG = UpcomingEventsActivity.class.getSimpleName();
+
     private TextView mInterestTextView;
     private ListView mListView;
     private String[] events = new String[] {"The Portland Hiking Meetup Group", "Docker Portland, OR",
@@ -28,8 +37,8 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
 
         Intent intent = getIntent();
-        String interest = intent.getStringExtra("interest");
-        mInterestTextView.setText("Here are all the results for: " + interest);
+        String topic = intent.getStringExtra("topic");
+        mInterestTextView.setText("Here are all the results for: " + topic);
 
         mLogInButton = (Button) findViewById(R.id.LogInButton);
         mLogInButton.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +46,27 @@ public class UpcomingEventsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UpcomingEventsActivity.this, LogInActivity.class);
                 startActivity(intent);
+            }
+        });
+        getMeetups(topic);
+    }
+    private void getMeetups(String topic) {
+            final MeetupService meetupService = new MeetupService();
+            meetupService.findMeetups(topic, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
