@@ -57,10 +57,17 @@ public class MeetupService {
                     String description = eventJSON.optString("description", "not provided");
                     String eventUrl = eventJSON.optString("event_url", "not provided");
                     double rsvpCount = eventJSON.optDouble("yes_rsvp_count");
-                    double latitude = eventJSON.getJSONObject("venue").optDouble("lat");
-                    double longitude = eventJSON.getJSONObject("venue").optDouble("lon");
-                    String address1 = eventJSON.getJSONObject("venue").optString("address_1", "not provided");
-                    String address2 = eventJSON.getJSONObject("venue").optString("address_2", "not provided");
+                    JSONObject venue = eventJSON.optJSONObject("venue");
+                    double latitude = 0;
+                    double longitude = 0;
+                    String address1 = "N/A";
+                    String address2 = "N/A";
+                    if(venue != null){
+                        latitude = venue.optDouble("lat");
+                        longitude = venue.optDouble("lon");
+                        address1 = venue.optString("address_1", "N/A");
+                        address2 = venue.optString("address_2", "N/A");
+                    }
                     String city = eventJSON.optString("city", "not provided");
                     String state = eventJSON.optString("state", "not provided");
                     String who = eventJSON.getJSONObject("group").getString("who");

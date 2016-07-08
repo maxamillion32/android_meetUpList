@@ -75,6 +75,21 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
                         ArrayAdapter adapter = new ArrayAdapter(UpcomingEventsActivity.this, android.R.layout.simple_list_item_1, eventNames);
                         mListView.setAdapter(adapter);
+
+                        for (Meetup meetup : mEvents) {
+                            Log.d(TAG, "Name: " + meetup.getName());
+                            Log.d(TAG, "Description: " + meetup.getDescription());
+                            Log.d(TAG, "EventUrl: " + meetup.getEventUrl());
+                            Log.d(TAG, "RsvpCount: " + meetup.getRsvpCount());
+                            Log.d(TAG, "Latitude: " + meetup.getLatitude());
+                            Log.d(TAG, "Longitude: " + meetup.getLongitude());
+                            Log.d(TAG, "Address Line 1: " + meetup.getAddress1());
+                            Log.d(TAG, "Address Line 2: " + meetup.getAddress2());
+                            Log.d(TAG, "City: " + meetup.getCity());
+                            Log.d(TAG, "State: " + meetup.getState());
+                            Log.d(TAG, "Who: " + meetup.getWho());
+                            Log.d(TAG, "Group Name: " + meetup.getNameGroup());
+                        }
                     }
                 });
             }
