@@ -22,8 +22,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
     private TextView mInterestTextView;
     private ListView mListView;
-    private String[] events = new String[] {"The Portland Hiking Meetup Group", "Docker Portland, OR",
-            "New-to-Portland Moms", "Free Yoga for Adults in Portland Area", "Activities and Sports for the Awesomely Mediocre", "New Relic FutureTalks PDX", "Art Geeks"};
     private Button mLogInButton;
 
     @Override
@@ -33,9 +31,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.listView);
         mInterestTextView = (TextView) findViewById(R.id.InterestTextView);
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, events);
-        mListView.setAdapter(adapter);
 
         Intent intent = getIntent();
         String topic = intent.getStringExtra("topic");
@@ -67,15 +62,21 @@ public class UpcomingEventsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    if (response.isSuccessful()) {
-                        Log.v(TAG, jsonData);
-                        mEvents = meetupService.processResults(response);
+
+                mEvents = meetupService.processResults(response);
+
+                UpcomingEventsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] eventNames = new String[mEvents.size()];
+                        for (int i = 0; i < eventNames.length; i++) {
+                            eventNames[i] = mEvents.get(i).getName();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(UpcomingEventsActivity.this, android.R.layout.simple_list_item_1, eventNames);
+                        mListView.setAdapter(adapter);
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                });
             }
         });
     }
