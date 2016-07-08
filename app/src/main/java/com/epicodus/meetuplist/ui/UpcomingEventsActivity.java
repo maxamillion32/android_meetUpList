@@ -35,7 +35,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String topic = intent.getStringExtra("topic");
         String location = intent.getStringExtra("location");
-        mInterestTextView.setText("Here are all the results for: " + topic);
+        mInterestTextView.setText("Here are all the results for: " + topic + " near " + location);
 
         mLogInButton = (Button) findViewById(R.id.LogInButton);
 
