@@ -21,16 +21,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_below="@+id/InterestTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:layout_above="@+id/LogInButton"
+        android:layout_below="@+id/InterestTextView" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Log In"
         android:id="@+id/LogInButton"
-        android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
