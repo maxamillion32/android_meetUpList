@@ -1,8 +1,12 @@
 package com.epicodus.meetuplist;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Guest on 7/8/16.
  */
+
+@Parcel
 public class Meetup {
     private String mName;
     private String mDescription;
@@ -16,6 +20,8 @@ public class Meetup {
     private String mState;
     private String mWho;
     private String mNameGroup;
+
+    public Meetup() {}
 
 public Meetup (String name, String description, String eventUrl, int rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
     this.mName = name;

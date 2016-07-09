@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:id="@+id/restaurantImageView"
+            android:id="@+id/eventImageView"
             android:src="@drawable/waffles"
             android:scaleType="centerCrop" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5 going"
-                android:id="@+id/ratingTextView"
+                android:id="@+id/rsvpTextView"
                 android:layout_alignTop="@+id/eventNameTextView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:id="@+id/cuisineTextView"
+                android:id="@+id/descriptionTextView"
                 android:layout_below="@+id/eventNameTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -115,13 +115,26 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Website"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/websiteTextView"
+                    android:textColor="@color/colorTextIcons"
+                    android:drawableLeft="@drawable/ic_public_black_12dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"/>
+
             </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save Event"
-                android:id="@+id/saveRestaurantButton"
+                android:id="@+id/saveEventButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
                 android:textColor="@color/colorTextIcons"
