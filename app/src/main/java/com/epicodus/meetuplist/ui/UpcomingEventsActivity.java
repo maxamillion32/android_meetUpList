@@ -47,7 +47,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UpcomingEventsActivity.this, com.epicodus.meetuplist.LogInActivity.class);
+                Intent intent = new Intent(UpcomingEventsActivity.this, LogInActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
     public ArrayList<com.epicodus.meetuplist.Meetup> mEvents = new ArrayList<>();
 
     private void getMeetups(String topic, String location) {
-            final com.epicodus.meetuplist.MeetupService meetupService = new com.epicodus.meetuplist.MeetupService();
+            final MeetupService meetupService = new MeetupService();
             meetupService.findMeetups(topic, location, new Callback() {
 
             @Override

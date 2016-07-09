@@ -37,8 +37,8 @@ public Meetup (String name, String description, String eventUrl, int rsvpCount, 
     }
 
     public String getDescription() {
-        if (mDescription.length()>160) {
-            return mDescription.substring(0, 160) + " ...";
+        if (mDescription.length()>350) {
+            return mDescription.substring(0, 350) + " ...";
         } else {
             return mDescription;
         }

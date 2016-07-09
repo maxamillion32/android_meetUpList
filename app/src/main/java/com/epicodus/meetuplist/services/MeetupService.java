@@ -55,19 +55,19 @@ public class MeetupService {
                 for (int i = 0; i < meetupsJSON.length(); i++) {
                     JSONObject eventJSON = meetupsJSON.getJSONObject(i);
                     String name = eventJSON.getString("name");
-                    String description = eventJSON.optString("description", "not provided");
-                    String eventUrl = eventJSON.optString("event_url", "not provided");
+                    String description = eventJSON.optString("description", "(not provided)");
+                    String eventUrl = eventJSON.optString("event_url", "(not provided)");
                     int rsvpCount = eventJSON.optInt("yes_rsvp_count");
                     JSONObject venue = eventJSON.optJSONObject("venue");
                     double latitude = 0;
                     double longitude = 0;
-                    String address1 = "not provided";
-                    String address2 = "not provided";
+                    String address1 = "(not provided)";
+                    String address2 = "(not provided)";
                     if(venue != null){
                         latitude = venue.optDouble("lat");
                         longitude = venue.optDouble("lon");
-                        address1 = venue.optString("address_1", "not provided");
-                        address2 = venue.optString("address_2", "not provided");
+                        address1 = venue.optString("address_1", "(not provided)");
+                        address2 = venue.optString("address_2", "(not provided)");
                     }
                     String city = eventJSON.optString("city", "not provided");
                     String state = eventJSON.optString("state", "not provided");
