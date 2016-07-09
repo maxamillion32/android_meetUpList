@@ -57,7 +57,7 @@ public class MeetupService {
                     String name = eventJSON.getString("name");
                     String description = eventJSON.optString("description", "not provided");
                     String eventUrl = eventJSON.optString("event_url", "not provided");
-                    double rsvpCount = eventJSON.optDouble("yes_rsvp_count");
+                    int rsvpCount = eventJSON.optInt("yes_rsvp_count");
                     JSONObject venue = eventJSON.optJSONObject("venue");
                     double latitude = 0;
                     double longitude = 0;

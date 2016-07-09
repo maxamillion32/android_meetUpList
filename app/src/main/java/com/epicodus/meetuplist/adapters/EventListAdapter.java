@@ -59,7 +59,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         public void bindEvent(Meetup event) {
             mEventTitleTextView.setText(event.getName());
             mDescriptionTextView.setText(event.getDescription());
-            mRsvpTextView.setText(event.getRsvpCount() + " are going");
+            mRsvpTextView.setText(event.getRsvpCount() + " " + event.getWho() + " are going");
         }
     }
 }

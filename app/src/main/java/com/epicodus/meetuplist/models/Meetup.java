@@ -7,7 +7,7 @@ public class Meetup {
     private String mName;
     private String mDescription;
     private String mEventUrl;
-    private double mRsvpCount;
+    private int mRsvpCount;
     private double mLatitude;
     private double mLongitude;
     private String mAddress1;
@@ -17,7 +17,7 @@ public class Meetup {
     private String mWho;
     private String mNameGroup;
 
-public Meetup (String name, String description, String eventUrl, double rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
+public Meetup (String name, String description, String eventUrl, int rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
     this.mName = name;
     this.mDescription = description;
     this.mEventUrl = eventUrl;
@@ -37,16 +37,18 @@ public Meetup (String name, String description, String eventUrl, double rsvpCoun
     }
 
     public String getDescription() {
-        return mDescription;
+        if (mDescription.length()>160) {
+            return mDescription.substring(0, 160) + " ...";
+        } else {
+            return mDescription;
+        }
     }
 
     public String getEventUrl() {
         return mEventUrl;
     }
 
-    public double getRsvpCount() {
-        return mRsvpCount;
-    }
+    public int getRsvpCount() { return mRsvpCount; }
 
     public double getLatitude() {
         return mLatitude;
