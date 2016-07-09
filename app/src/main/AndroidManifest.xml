@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.meetuplist">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,9 +20,10 @@
         <activity android:name=".UpcomingEventsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.meetuplist.MainActivity"></meta-data>
+                android:value="com.epicodus.meetuplist.MainActivity" />
         </activity>
-        <activity android:name=".LogInActivity"></activity>
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".ui.EventDetailActivity"></activity>
     </application>
 
 </manifest>
