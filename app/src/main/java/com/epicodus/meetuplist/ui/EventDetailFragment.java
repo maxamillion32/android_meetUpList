@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.Meetup;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -18,6 +19,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class EventDetailFragment extends Fragment {
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
     @Bind(R.id.eventImageView) ImageView mImageLabel;
     @Bind(R.id.eventNameTextView) TextView mNameLabel;
     @Bind(R.id.rsvpTextView) TextView mRsvpLabel;
@@ -49,13 +52,13 @@ public class EventDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         ButterKnife.bind(this, view);
 
-//        Picasso.with(view.getContext()).load(mEvents.getImageUrl()).into(mImageLabel);
+//        Picasso.with(view.getContext()).load(mEvents.getImageUrl()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(mImageLabel);
 
         mNameLabel.setText(mEvents.getName());
         mRsvpLabel.setText(mEvents.getRsvpCount() + " are going");
         mDescriptionLabel.setText(mEvents.getDescription());
         mGroupLabel.setText(mEvents.getNameGroup());
-        mAddressLabel.setText(mEvents.getAddress1() + ", " + mEvents.getAddress2() + ", " + mEvents.getCity() + ", " + mEvents.getState());
+        mAddressLabel.setText(mEvents.getAddress1());
         mCoordinateLabel.setText(mEvents.getLatitude() + ", " + mEvents.getLongitude());
 
         return view;
