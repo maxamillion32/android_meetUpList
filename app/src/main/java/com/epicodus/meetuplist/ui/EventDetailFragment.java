@@ -1,6 +1,8 @@
 package com.epicodus.meetuplist.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,14 +20,14 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class EventDetailFragment extends Fragment {
+public class EventDetailFragment extends Fragment implements View.OnClickListener{
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;
     @Bind(R.id.eventImageView) ImageView mImageLabel;
     @Bind(R.id.eventNameTextView) TextView mNameLabel;
     @Bind(R.id.rsvpTextView) TextView mRsvpLabel;
     @Bind(R.id.descriptionTextView) TextView mDescriptionLabel;
-    @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
+    @Bind(R.id.websiteTextView) TextView mEventWebsiteLabel;
     @Bind(R.id.groupTextView) TextView mGroupLabel;
     @Bind(R.id.addressTextView) TextView mAddressLabel;
     @Bind(R.id.coordinateTextView) TextView mCoordinateLabel;
@@ -60,7 +62,27 @@ public class EventDetailFragment extends Fragment {
         mGroupLabel.setText(mEvents.getNameGroup());
         mAddressLabel.setText(mEvents.getAddress1());
         mCoordinateLabel.setText(mEvents.getLatitude() + ", " + mEvents.getLongitude());
+        mEventWebsiteLabel.setText(mEvents.getEventUrl());
+
+        mEventWebsiteLabel.setOnClickListener(this);
 
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mEventWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mEvents.getEventUrl()));
+            startActivity(webIntent);
+        }
+        if (v == mCoordinateLabel) {
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:" + mEvents.getLatitude()
+                            + "," + mEvents.getLongitude()
+                            + "?q=(" + mEvents.getName() + ")"));
+            startActivity(mapIntent);
+        }
+    }
+
 }
