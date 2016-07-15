@@ -1,7 +1,9 @@
-package com.epicodus.meetuplist;
+package com.epicodus.meetuplist.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.epicodus.meetuplist.R;
 
 public class LogInActivity extends AppCompatActivity {
 

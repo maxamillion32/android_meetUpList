@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.adapters.EventPagerAdapter;
-import com.epicodus.meetuplist.Meetup;
+import com.epicodus.meetuplist.models.Meetup;
 
 import org.parceler.Parcels;
 

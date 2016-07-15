@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.epicodus.meetuplist.Meetup;
+import com.epicodus.meetuplist.models.Meetup;
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.ui.EventDetailActivity;
 

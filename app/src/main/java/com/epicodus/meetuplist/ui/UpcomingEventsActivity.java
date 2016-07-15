@@ -1,4 +1,4 @@
-package com.epicodus.meetuplist;
+package com.epicodus.meetuplist.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.adapters.EventListAdapter;
+import com.epicodus.meetuplist.models.Meetup;
+import com.epicodus.meetuplist.services.MeetupService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,16 +50,16 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         mLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UpcomingEventsActivity.this, com.epicodus.meetuplist.LogInActivity.class);
+                Intent intent = new Intent(UpcomingEventsActivity.this, LogInActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public ArrayList<com.epicodus.meetuplist.Meetup> mEvents = new ArrayList<>();
+    public ArrayList<Meetup> mEvents = new ArrayList<>();
 
     private void getMeetups(String topic, String location) {
-            final com.epicodus.meetuplist.MeetupService meetupService = new com.epicodus.meetuplist.MeetupService();
+            final MeetupService meetupService = new MeetupService();
             meetupService.findMeetups(topic, location, new Callback() {
 
             @Override

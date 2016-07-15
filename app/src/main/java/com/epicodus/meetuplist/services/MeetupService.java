@@ -1,7 +1,8 @@
-package com.epicodus.meetuplist;
+package com.epicodus.meetuplist.services;
 
-
-
+import com.epicodus.meetuplist.Constants;
+import com.epicodus.meetuplist.models.Meetup;
+import com.epicodus.meetuplist.ui.UpcomingEventsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

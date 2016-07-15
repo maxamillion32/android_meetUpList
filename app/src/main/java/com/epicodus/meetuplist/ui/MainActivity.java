@@ -1,4 +1,4 @@
-package com.epicodus.meetuplist;
+package com.epicodus.meetuplist.ui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.epicodus.meetuplist.R;
+import com.epicodus.meetuplist.ui.UpcomingEventsActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

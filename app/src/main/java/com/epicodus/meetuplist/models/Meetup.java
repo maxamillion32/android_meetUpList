@@ -1,4 +1,4 @@
-package com.epicodus.meetuplist;
+package com.epicodus.meetuplist.models;
 
 import org.parceler.Parcel;
 

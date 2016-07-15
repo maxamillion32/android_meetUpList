@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.meetuplist.R;
-import com.epicodus.meetuplist.Meetup;
+import com.epicodus.meetuplist.models.Meetup;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -65,6 +65,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mEventWebsiteLabel.setText(mEvents.getEventUrl());
 
         mEventWebsiteLabel.setOnClickListener(this);
+        mCoordinateLabel.setOnClickListener(this);
 
         return view;
     }
@@ -79,10 +80,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         if (v == mCoordinateLabel) {
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("geo:" + mEvents.getLatitude()
-                            + "," + mEvents.getLongitude()
-                            + "?q=(" + mEvents.getName() + ")"));
+                            + "," + mEvents.getLongitude()));
             startActivity(mapIntent);
         }
     }
 
 }
+
+//+ "?q=(" + mEvents.getName() + ")"
