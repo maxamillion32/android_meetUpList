@@ -12,9 +12,11 @@ public class Constants {
     public static final String TIME_QUERY_PARAMETER = "time=,1w";
     public static final String LOCATION_QUERY_PARAMETER = "zip";
 
-    public static final String PREFERENCES_LOCATION_KEY = "location";
+//    public static final String PREFERENCES_LOCATION_KEY = "location";
 
     public static final String FIREBASE_CHILD_SEARCHED_LOCATION = "searchedLocation";
+
+    public static final String FIREBASE_CHILD_EVENTS = "events";
 
     // https://api.meetup.com/2/open_events?topic=dancing&time=,1w&key=263238565a442e1967147767292e2462
 }

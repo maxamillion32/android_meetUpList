@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.meetuplist.Constants;
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.models.Meetup;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -66,6 +70,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
 
         mEventWebsiteLabel.setOnClickListener(this);
         mCoordinateLabel.setOnClickListener(this);
+        mSaveEventButton.setOnClickListener(this);
 
         return view;
     }
@@ -82,6 +87,13 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
                     Uri.parse("geo:" + mEvents.getLatitude()
                             + "," + mEvents.getLongitude()));
             startActivity(mapIntent);
+        }
+        if (v == mSaveEventButton) {
+            DatabaseReference eventRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_EVENTS);
+            eventRef.push().setValue(mEvents);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 
