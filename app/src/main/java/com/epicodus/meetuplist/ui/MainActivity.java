@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.InterestEditText) EditText mInterestEditText;
     @Bind(R.id.AppNameTextView) TextView mAppNameTextView;
     @Bind(R.id.LocationEditText) EditText mLocationEditText;
+    @Bind(R.id.savedEventsButton) Button mSavedEventsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
         mAppNameTextView.setTypeface(pacificoFont);
         mFindEventsButton.setOnClickListener(this);
+        mSavedEventsButton.setOnClickListener(this);
 
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mEditor = mSharedPreferences.edit();
@@ -66,7 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("topic", topic);
                 intent.putExtra("location", location);
                 startActivity(intent);
-            }
+                }
+                if (v == mSavedEventsButton) {
+                Intent intent = new Intent(MainActivity.this, SavedEventListActivity.class);
+                startActivity(intent);
+                }
     }
 
     public void saveLocationToFirebase(String location) {

@@ -41,9 +41,21 @@
         android:id="@+id/FindEventsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="61dp"
         android:layout_alignBottom="@+id/imageView"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Saved Events"
+        android:id="@+id/savedEventsButton"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorTextIcons"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <EditText
         android:layout_width="wrap_content"
