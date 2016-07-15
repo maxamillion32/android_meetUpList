@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="My Saved Events"
         android:id="@+id/savedEventsButton"
-        android:background="@color/colorAccent"
+        android:background="#333"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
         android:layout_alignParentBottom="true"

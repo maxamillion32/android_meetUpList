@@ -35,7 +35,6 @@ public class UpcomingEventsActivity extends AppCompatActivity {
     public static final String TAG = UpcomingEventsActivity.class.getSimpleName();
 
     @Bind(R.id.InterestTextView) TextView mInterestTextView;
-    @Bind(R.id.LogInButton) Button mLogInButton;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private EventListAdapter mAdapter;
@@ -51,17 +50,7 @@ public class UpcomingEventsActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         mInterestTextView.setText("Here are all the results for: " + topic + " near " + location);
 
-        mLogInButton = (Button) findViewById(R.id.LogInButton);
-
         getMeetups(topic, location);
-
-        mLogInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UpcomingEventsActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
-        });
 
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.epicodus.meetuplist.Constants;
 import com.epicodus.meetuplist.R;
@@ -21,6 +22,7 @@ public class SavedEventListActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.InterestTextView) TextView mInterestTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class SavedEventListActivity extends AppCompatActivity {
 
         mEventReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EVENTS);
         setUpFirebaseAdapter();
+
+        mInterestTextView.setText("Saved Events");
     }
 
     private void setUpFirebaseAdapter() {
