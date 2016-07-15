@@ -20,6 +20,7 @@ public class Meetup {
     String state;
     String who;
     String nameGroup;
+    private String pushId;
 
     public Meetup() {}
 
@@ -86,5 +87,13 @@ public Meetup (String name, String description, String eventUrl, int rsvpCount, 
 
     public String getNameGroup() {
         return nameGroup;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

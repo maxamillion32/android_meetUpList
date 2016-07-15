@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.epicodus.meetuplist.Constants;
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.models.Meetup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -89,10 +91,16 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
             startActivity(mapIntent);
         }
         if (v == mSaveEventButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference eventRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_EVENTS);
-            eventRef.push().setValue(mEvents);
+                    .getReference(Constants.FIREBASE_CHILD_EVENTS)
+                    .child(uid);
+            DatabaseReference pushRef = eventRef.push();
+            String pushId = pushRef.getKey();
+            mEvents.setPushId(pushId);
+            pushRef.setValue(mEvents);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
