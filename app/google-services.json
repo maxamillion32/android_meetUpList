@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "176311279044",
+    "firebase_url": "https://meetuplist-f191b.firebaseio.com",
+    "project_id": "meetuplist-f191b",
+    "storage_bucket": "meetuplist-f191b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176311279044:android:e4f39d07c300a596",
+        "android_client_info": {
+          "package_name": "com.epicodus.meetuplist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176311279044-sae6i0gmo56pamivonkt6eoh4ka60sts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.meetuplist",
+            "certificate_hash": "112DCA7B8244529B1283269C6695ACAF901A494C"
+          }
+        },
+        {
+          "client_id": "176311279044-jl4fbo0jq9gd65a88imdjocr5qm1b749.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClffKmAtnH4Lynr3v65x8_iEmb0O7m58o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176311279044-jl4fbo0jq9gd65a88imdjocr5qm1b749.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
