@@ -44,7 +44,7 @@ public class SavedEventListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Meetup, FirebaseEventViewHolder>
-                (Meetup.class, R.layout.event_list_item, FirebaseEventViewHolder.class,
+                (Meetup.class, R.layout.event_list_item_drag, FirebaseEventViewHolder.class,
                         mEventReference) {
 
             @Override
