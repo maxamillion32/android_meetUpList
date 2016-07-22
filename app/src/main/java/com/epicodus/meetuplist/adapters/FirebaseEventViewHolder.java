@@ -11,6 +11,7 @@ import com.epicodus.meetuplist.Constants;
 import com.epicodus.meetuplist.R;
 import com.epicodus.meetuplist.models.Meetup;
 import com.epicodus.meetuplist.ui.EventDetailActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +51,9 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
     @Override
     public void onClick(View view) {
         final ArrayList<Meetup> events = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EVENTS);
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EVENTS).child(uid);
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

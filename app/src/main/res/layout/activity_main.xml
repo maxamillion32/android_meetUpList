@@ -42,7 +42,7 @@
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         android:layout_marginBottom="61dp"
-        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <Button
