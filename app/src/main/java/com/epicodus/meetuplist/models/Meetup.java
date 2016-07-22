@@ -43,13 +43,7 @@ public Meetup (String name, String description, String eventUrl, int rsvpCount, 
         return name;
     }
 
-    public String getDescription() {
-        if (description.length()>350) {
-            return description.substring(0, 350) + " ...";
-        } else {
-            return description;
-        }
-    }
+    public String getDescription() { return description.replaceAll("<[^>]*>", ""); }
 
     public String getEventUrl() {
         return eventUrl;
