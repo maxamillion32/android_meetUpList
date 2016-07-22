@@ -4,12 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.TextView;
 
 import com.epicodus.meetuplist.Constants;
 import com.epicodus.meetuplist.R;
+import com.epicodus.meetuplist.adapters.FirebaseEventListAdapter;
 import com.epicodus.meetuplist.adapters.FirebaseEventViewHolder;
 import com.epicodus.meetuplist.models.Meetup;
+import com.epicodus.meetuplist.util.OnStartDragListener;
+import com.epicodus.meetuplist.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,9 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedEventListActivity extends AppCompatActivity {
+public class SavedEventListActivity extends AppCompatActivity implements OnStartDragListener {
     private DatabaseReference mEventReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseEventListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.InterestTextView) TextView mInterestTextView;
@@ -33,34 +38,41 @@ public class SavedEventListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upcoming_events);
         ButterKnife.bind(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        mEventReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EVENTS).child(uid);
         setUpFirebaseAdapter();
 
         mInterestTextView.setText("Saved Events");
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Meetup, FirebaseEventViewHolder>
-                (Meetup.class, R.layout.event_list_item_drag, FirebaseEventViewHolder.class,
-                        mEventReference) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
-            @Override
-            protected void populateViewHolder(FirebaseEventViewHolder viewHolder,
-                                              Meetup model, int position) {
-                viewHolder.bindEvent(model);
-            }
-        };
+        mEventReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_EVENTS)
+                .child(uid);
+
+        mFirebaseAdapter = new FirebaseEventListAdapter(Meetup.class, R.layout.event_list_item_drag, FirebaseEventViewHolder.class,
+                        mEventReference, this, this);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }

@@ -30,6 +30,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
     View mView;
     Context mContext;
+    public ImageView mDragIcon;
 
     public FirebaseEventViewHolder(View itemView) {
         super(itemView);
@@ -46,6 +47,8 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         eventTitleTextView.setText(event.getName());
         descriptionTextView.setText(event.getDescription());
         rsvpTextView.setText(event.getRsvpCount() + " " + event.getWho() + " are going");
+
+        mDragIcon = (ImageView) mView.findViewById(R.id.dragIcon);
     }
 
     @Override
