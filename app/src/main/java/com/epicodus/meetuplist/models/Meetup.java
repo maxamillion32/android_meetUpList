@@ -22,6 +22,8 @@ public class Meetup {
     String nameGroup;
     private String pushId;
 
+    String index;
+
     public Meetup() {}
 
 public Meetup (String name, String description, String eventUrl, int rsvpCount, double latitude, double longitude, String address1, String address2, String city, String state, String who, String nameGroup) {
@@ -37,6 +39,7 @@ public Meetup (String name, String description, String eventUrl, int rsvpCount, 
     this.state = state;
     this.who = who;
     this.nameGroup = nameGroup;
+    this.index = "not_specified";
     }
 
     public String getName() {
@@ -89,5 +92,13 @@ public Meetup (String name, String description, String eventUrl, int rsvpCount, 
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

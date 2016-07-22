@@ -18,5 +18,7 @@ public class Constants {
 
     public static final String FIREBASE_CHILD_EVENTS = "events";
 
+    public static final String FIREBASE_QUERY_INDEX = "index";
+
     // https://api.meetup.com/2/open_events?topic=dancing&time=,1w&key=263238565a442e1967147767292e2462
 }

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by Guest on 7/14/16.
  */
-public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseEventViewHolder extends RecyclerView.ViewHolder{
 
     View mView;
     Context mContext;
@@ -36,7 +36,6 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindEvent(Meetup event) {
@@ -49,34 +48,5 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         rsvpTextView.setText(event.getRsvpCount() + " " + event.getWho() + " are going");
 
         mDragIcon = (ImageView) mView.findViewById(R.id.dragIcon);
-    }
-
-    @Override
-    public void onClick(View view) {
-        final ArrayList<Meetup> events = new ArrayList<>();
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_EVENTS).child(uid);
-
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    events.add(snapshot.getValue(Meetup.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, EventDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("events", Parcels.wrap(events));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
     }
 }

@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,13 +48,13 @@ public class SavedEventListActivity extends AppCompatActivity implements OnStart
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mEventReference = FirebaseDatabase
-                .getInstance()
+        Query query = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_EVENTS)
-                .child(uid);
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseEventListAdapter(Meetup.class, R.layout.event_list_item_drag, FirebaseEventViewHolder.class,
-                        mEventReference, this, this);
+                        query, this, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
