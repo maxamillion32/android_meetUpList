@@ -30,6 +30,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
+    @Bind(R.id.unregisteredLoginButton) Button mUnregisteredLoginButton;
 
     private FirebaseAuth mAuth;
 
@@ -45,6 +46,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
+        mUnregisteredLoginButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +71,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
        if (view == mRegisterTextView) {
            Intent intent = new Intent(LogInActivity.this, CreateAccountActivity.class);
+           startActivity(intent);
+           finish();
+       }
+       if (view == mUnregisteredLoginButton) {
+           Intent intent = new Intent(LogInActivity.this, MainActivity.class);
            startActivity(intent);
            finish();
        }
