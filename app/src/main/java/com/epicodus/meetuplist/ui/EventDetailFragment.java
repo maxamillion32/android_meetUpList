@@ -36,7 +36,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
     @Bind(R.id.websiteTextView) TextView mEventWebsiteLabel;
     @Bind(R.id.groupTextView) TextView mGroupLabel;
     @Bind(R.id.addressTextView) TextView mAddressLabel;
-    @Bind(R.id.coordinateTextView) TextView mCoordinateLabel;
+    @Bind(R.id.sendtextTextView) TextView mSendTextLabel;
     @Bind(R.id.saveEventButton) TextView mSaveEventButton;
 
     private Meetup mEvents;
@@ -67,11 +67,11 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mDescriptionLabel.setText(mEvents.getDescription());
         mGroupLabel.setText(mEvents.getNameGroup());
         mAddressLabel.setText(mEvents.getAddress1());
-        mCoordinateLabel.setText(mEvents.getLatitude() + ", " + mEvents.getLongitude());
         mEventWebsiteLabel.setText(mEvents.getEventUrl());
 
         mEventWebsiteLabel.setOnClickListener(this);
-        mCoordinateLabel.setOnClickListener(this);
+        mAddressLabel.setOnClickListener(this);
+        mSendTextLabel.setOnClickListener(this);
         mSaveEventButton.setOnClickListener(this);
 
         return view;
@@ -84,11 +84,18 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
                     Uri.parse(mEvents.getEventUrl()));
             startActivity(webIntent);
         }
-        if (v == mCoordinateLabel) {
+        if (v == mAddressLabel) {
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("geo:" + mEvents.getLatitude()
                             + "," + mEvents.getLongitude()));
             startActivity(mapIntent);
+        }
+        if (v == mSendTextLabel) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Check out this Meetup: " + mEvents.getEventUrl());
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
         }
         if (v == mSaveEventButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

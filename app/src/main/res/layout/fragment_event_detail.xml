@@ -111,9 +111,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Longitude, Latitude"
+                    android:text="Share via Text"
                     android:drawablePadding="4dp"
-                    android:id="@+id/coordinateTextView"
+                    android:id="@+id/sendtextTextView"
                     android:textColor="@color/colorTextIcons"
                     android:drawableLeft="@drawable/ic_near_me_black_12dp"
                     android:textSize="12sp"
