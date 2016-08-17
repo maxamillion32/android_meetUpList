@@ -4,6 +4,7 @@ package com.epicodus.meetuplist.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +75,15 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
         mSendTextLabel.setOnClickListener(this);
         mSaveEventButton.setOnClickListener(this);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+        }
+        else {
+            mSaveEventButton.setVisibility(View.GONE);
+        }
+
         return view;
+
     }
 
     @Override
@@ -109,6 +118,7 @@ public class EventDetailFragment extends Fragment implements View.OnClickListene
             mEvents.setPushId(pushId);
             pushRef.setValue(mEvents);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
         }
     }
 

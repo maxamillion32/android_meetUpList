@@ -67,7 +67,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, EventDetailActivity.class);
-            intent.putExtra("position", itemPosition + "");
+            intent.putExtra("position", itemPosition);
             Log.d(TAG, "onClick: " + mEvents);
             intent.putExtra("events", Parcels.wrap(mEvents));
             mContext.startActivity(intent);
